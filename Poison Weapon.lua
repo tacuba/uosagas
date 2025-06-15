@@ -40,9 +40,7 @@ end
 local function countWeapons()
 	local weaponList = {}
 	
-	local weaponFilter = {onground = false, 
-						  graphics = targetWeapon,
-						  }
+	local weaponFilter = {onground = false, graphics = targetWeapon}
 						  
     local weaponList = Items.FindByFilter(weaponFilter)
     
