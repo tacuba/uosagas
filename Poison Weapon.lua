@@ -10,10 +10,13 @@ local function checkPoison()
     else
         Messages.Overhead("The weapon is NOT poisoned.", 45, Player.Serial) -- red
         Pause(800)
+        
         -- Unequip weapon if not poisoned
         Messages.Overhead("Unequipping weapon.", 11, Player.Serial)
         Pause(800)
         Player.ClearHands("left")
+        Pause(800)
+        equipPoisedWeapon()
     end
 end
 
@@ -33,7 +36,7 @@ local function findTargetWeapon()
 	local fishingPole = Items.FindByType(targetWeapon)
 	if fishingPole and fishingPole.RootContainer == Player.Serial then
 		Messages.Overhead("Target weapon found in backpack!", 72, Player.Serial)
-		Pause(800)		
+		Pause(800)
 	else
 		Messages.Overhead("No target weapon found!", 33, Player.Serial)
 		Pause(600)
@@ -65,6 +68,24 @@ local function countWeapons()
     		Pause(800)
     	end
     end
+end	
+
+-- Equip poisoned weapon
+local function equipPoisonedWeapon()
+	for i = 1, #weaponList do
+       	local poisonWeapon = weaponList[i]
+
+       	-- Request properties (needed if the item hasn't been hovered)
+       	Items.RequestProperties(poisonWeapon.Serial)
+       	Pause(250) -- Give time for property fetch
+
+        if poisonWeapon.Properties and string.find(string.lower(poisonWeapon.Properties), "poison") then
+   	        -- Found poisoned weapon; equip it
+       	    Equip(poisonWeapon.Serial, "RightHand")
+           	Messages.Overhead("Poisoned weapon equipped!", 68, Player.Serial)
+           	return
+        end
+	end
 end
 
 findTargetWeapon()
