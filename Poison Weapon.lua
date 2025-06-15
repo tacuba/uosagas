@@ -6,11 +6,13 @@ local function checkPoison()
 	
 	if string.find(propertiesText, "poison") then
         Messages.Overhead("The weapon is poisoned!", 68, Player.Serial) -- green
+        Pause(800)
     else
         Messages.Overhead("The weapon is NOT poisoned.", 45, Player.Serial) -- red
-        Pause(600)
+        Pause(800)
         -- Unequip weapon if not poisoned
         Messages.Overhead("Unequipping weapon.", 11, Player.Serial)
+        Pause(800)
         Player.ClearHands("left")
     end
 end
@@ -23,8 +25,7 @@ local function findTargetWeapon()
 		Messages.Overhead("Target weapon is equipped!", 72, Player.Serial)
 		Pause(800)
 		examineWeapon = equippedItem
-		checkPoison()
-		--if <------ Keep equipped if poisoned; unequip if not. 
+		checkPoison() 
 		return equippedItem
 	end
 
@@ -54,13 +55,14 @@ local function countWeapons()
     -- Count based on whether equipped or not
     if Items.FindByLayer(1) == nil then
     	Messages.Overhead("You have "..(weaponCount).." "..weaponName.."(s) available.", 55, Player.Serial)
-        Pause(1000)
+        Pause(800)
     else
 	    if weaponList and weaponCount-1 > 0 then
         	Messages.Overhead("You have "..(weaponCount-1).." "..weaponName.."(s) available.", 55, Player.Serial)
-        	Pause(1000)
+        	Pause(800)
     	else
     		Messages.Overhead("Warning: No more weapons in backpack!", 45, Player.Serial)
+    		Pause(800)
     	end
     end
 end
