@@ -1,3 +1,10 @@
+-- Title: Skinning and Looting
+-- Last Updated: 06/23/2025
+-- Original Author: RealMonero (https://github.com/RealMonero/UOSagas)
+-- Adapted by: Tacuba (https://github.com/tacuba/uosagas)
+-- Description: This script will skin corpses, loot the corpse, and cut hides into leather.
+-- Update Notes: Adjusted timers; added Overhead messages; refined loot logic.
+
 local lastSkinnedSerial = -1
 
 while true do
@@ -31,7 +38,7 @@ while true do
 
                 lastSkinnedSerial = corpse.Serial
 
-                Pause(1200) -- Wait for skinning animation and journal update
+                Pause(600) -- Wait for skinning animation and journal update
 
                 local successMsg = "You skin it, and the hides are now in the corpse."
                 if Journal.Contains(successMsg) then
@@ -84,6 +91,5 @@ while true do
             end
         end
     end
-
     Pause(500)
 end
