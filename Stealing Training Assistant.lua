@@ -237,7 +237,7 @@ while Skills.GetValue('Stealing') < 100 do
 
         else
             Messages.Print("ERROR: No items found in backpack to replenish. Stopping.", 34)
-            return
+            break
         end
     end
 end
