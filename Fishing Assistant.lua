@@ -1,8 +1,8 @@
 -- Name: Fishing and Boating Assistant
--- Authors: Tacuba 
+-- Authors: Tacuba, Coolskin
 -- Description: Boat navigation Gump
 --              and fishing assistance
--- Last Updated: July 12, 2025
+-- Last Updated: August 1, 2025
 
 -- ====================================
 -- ADDED: Coordinate Conversion Function
